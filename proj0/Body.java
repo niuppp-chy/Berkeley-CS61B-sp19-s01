@@ -132,5 +132,19 @@ public class Body {
         yyPos = yyPos + dt * yyVel;
     }
 
+    public void draw() {
+        // StdDraw.point(xxPos, yyPos);
+        String s = "images/" + imgFileName;
+
+        // StdDraw.enableDoubleBuffering();
+        StdDraw.picture(xxPos, yyPos, s);
+
+        // StdDraw.clear();
+
+		// StdDraw.show();
+		// StdDraw.pause(2000);
+    }
+    
+
 
 }
