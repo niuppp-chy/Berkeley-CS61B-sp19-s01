@@ -3,6 +3,7 @@
 /** -----���� */
 public class Body {
 
+    // 这些变量是不是只能在class中使用？
     public double xxPos;
     public double yyPos;
     public double xxVel;
@@ -136,12 +137,12 @@ public class Body {
         // StdDraw.point(xxPos, yyPos);
         String s = "images/" + imgFileName;
 
-        // StdDraw.enableDoubleBuffering();
+        StdDraw.enableDoubleBuffering();
         StdDraw.picture(xxPos, yyPos, s);
 
-        // StdDraw.clear();
+        StdDraw.clear();
 
-		// StdDraw.show();
+		StdDraw.show();
 		// StdDraw.pause(2000);
     }
     

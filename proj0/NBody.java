@@ -52,24 +52,63 @@ public class NBody {
 
         // get radius and draw 
         In in = new In(filename);
-        in.readInt();
+        int size = in.readInt();
         double radius = in.readDouble(); 
 
-        // draw background
+        // // draw background
         // StdDraw.enableDoubleBuffering();
-        StdDraw.circle(0, 0, radius); // draw cricle
+        // StdDraw.circle(0, 0, radius); // draw cricle
 
         // StdDraw.clear();
-        StdDraw.picture(0, 0, imageToDraw);
+        // StdDraw.picture(0, 0, imageToDraw);
         
 		// StdDraw.show();
-		// StdDraw.pause(2000);
+		// // StdDraw.pause(2000);
 
-        // draw every Body
-        for (Body body : bodies) {
-            body.draw();
+        // // draw every Body
+        // for (Body body : bodies) {
+        //     body.draw();
+        // }
+
+        double t = 0.0;
+        // int size = bodies.size; // 这个应该有问题
+        double xForces [] = new double[size];
+        double yForces [] = new double[size];
+
+        while(t < T) {
+            for (int i = 0; i < size; i++) {
+                xForces[i] = bodies[i].calcNetForceExertedByX(bodies);
+                yForces[i] = bodies[i].calcNetForceExertedByY(bodies);
+            }
+            // update
+            for(int i = 0; i < size; i++) {
+                bodies[i].update(dt, xForces[i], yForces[i]);
+            }
+
+            // draw background
+            StdDraw.enableDoubleBuffering();
+            StdDraw.circle(0, 0, radius); // draw cricle
+            StdDraw.clear();
+            StdDraw.picture(0, 0, imageToDraw);
+            StdDraw.show();
+    
+            // draw every Body
+            for (Body body : bodies) {
+                body.draw();
+            }
+
+            StdDraw.pause(1000); // 10ms ?
+            t += dt;
         }
-
+        
+        // print the final state of the universe
+        StdOut.printf("%d\n", size);
+        StdOut.printf("%.2e\n", radius);
+        for (int i = 0; i < size; i++) {
+            StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
+                          bodies[i].xxPos, bodies[i].yyPos, bodies[i].xxVel,
+                          bodies[i].yyVel, bodies[i].mass, bodies[i].imgFileName);   
+        }
 
     }
 }
