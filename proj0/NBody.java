@@ -100,6 +100,9 @@ public class NBody {
             StdDraw.pause(1000); // 10ms ?
             t += dt;
         }
+
+        
+        ...
         
         // print the final state of the universe
         StdOut.printf("%d\n", size);
