@@ -18,7 +18,7 @@ public class LinkedListDequeTest {
 		}
 		return true;
 	}
-
+	0
 	/* Prints a nice message based on whether a test passed. 
 	 * The \n means newline. */
 	public static void printTestStatus(boolean passed) {
